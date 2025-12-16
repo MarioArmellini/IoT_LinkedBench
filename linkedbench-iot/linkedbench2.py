@@ -231,13 +231,13 @@ class LinkedBenchSystem:
 
         count = int(self.seat1_active) + int(self.seat2_active)
 
-        # ❌ 0 o 2 personas → NO se puede cambiar
+        # 0 o 2 personas → NO se puede cambiar
         if count != 1:
             logger.warning("Cambio de modo bloqueado por ocupación")
             self.buzzer.beep_error()
             return
 
-        # ✅ SOLO con 1 persona
+        # SOLO con 1 persona
         if self.current_mode == MODE_AVAILABLE:
             self.current_mode = MODE_STUDYING
         elif self.current_mode == MODE_STUDYING:
@@ -255,7 +255,6 @@ class LinkedBenchSystem:
         """Se ejecuta cuando alguien se sienta"""
         logger.info("Alguien se ha sentado.")
         
-        # Opcional: Si quieres que empiece en 'Studying' al sentarse, descomenta esto:
         # if self.current_mode == MODE_EMPTY: self.current_mode = MODE_STUDYING
         
         event = {
